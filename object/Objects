@@ -1,6 +1,9 @@
 An.object().named('Objects').from({
 	init: function() { 
-		window.each(function(v,k) { if (v && v['can'] && v.can('init')) Objects[k] = v});
+		window.each(function(v,k) { 
+			try { if (v && typeof(v.can) == 'function' && v.can('init')) Objects[k] = v } 
+			catch(e) { /* InstallTrigger barfs on FF */}
+		});
 		this.init = false;
 	}
 }).init();
