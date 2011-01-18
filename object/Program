@@ -1,0 +1,18 @@
+An.object().named('Program').from({
+	gl: Screen.gl,
+	init: function() {
+		this.program = this.gl.createProgram();
+	},
+	attach: function(shader) {
+		this.gl.attachShader(this.program,shader);
+	},
+	link: function() {
+		this.gl.linkProgram(this.program);
+		if (! this.gl.getProgramParameter(this.program,this.gl.LINK_STATUS)) {
+			alert('failed to compile shaders');
+		}
+	},
+	use: function() {
+		this.gl.useProgram(this.program);
+	},
+});

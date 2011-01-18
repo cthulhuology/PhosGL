@@ -28,3 +28,9 @@ String.prototype.name = function() {
 	return this 
 }
 
+String.prototype.join = function() {
+	var retval = '';
+	for (var i = 0; i < arguments.length - 1; ++i) retval += arguments[i] + this;
+	return retval + arguments[i];
+}
+

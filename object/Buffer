@@ -1,0 +1,18 @@
+An.object().named('Buffer').from({
+	gl: Screen.gl,
+	type: function() {
+		return this.gl.ARRAY_BUFFER;
+	},
+	style: function() {
+		return this.gl.STATIC_DRAW;
+	},
+	init: function() {
+		this.buffer = this.gl.createBuffer();
+	},
+	bind: function() {
+		this.gl.bindBuffer(gl.type(), this.buffer);
+	},
+	data: function(data) {
+		this.gl.bufferData(gl.type(), new Float32Array(data), this.style());
+	},
+}

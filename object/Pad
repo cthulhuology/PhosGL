@@ -1,0 +1,16 @@
+An.object().named('Pad').from(Device, {
+	move: function(e) { 
+		e.preventDefault();
+		Pad.x = e.
+		Pad.x = e.x + Display.x;
+		Pad.y = e.y + Display.y; 
+		Pad.dispatch('move',e) 
+	},
+	down: function(e) { Mouse.dispatch('down',e) },
+	up: function(e) { Mouse.dispatch('up',e) },
+	disable: function(e) { e.preventDefault() },
+	init: function () { 
+		_root.when('touchmove',Pad.move).when('touchstart',Pad.down).when('touchend',Pad.up).when('gesturestart',Pad.disable).when('gesturechange',Pad.disable);
+		return this;
+	},
+}).init();

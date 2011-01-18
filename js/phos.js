@@ -94,11 +94,13 @@ Object.prototype.use = function() {
 _root.onload = function() {
 	_body = _doc.getElementsByTagName('body')[0];
 	use('Object','Array','String','Box','Widget','Component','Event','Device','Resource',
-		'Display','Keyboard','Mouse','Screen','Text','Sound','Image','Movie',
+		'Display','Keyboard','Mouse','Pad','Screen','Text','Sound','Image','Movie',
 		'Help','Inventory','Trash','Objects','Mirror','Phosphor',
 		'Names','HotKey','Block',
 		'Graphic','Rectangle','Circle',
-		'Blog','Search','App', 
+		'Blog','Search',
+		'Shader',
+		'App', 
 		navigator.userAgent.match(/AppleWebKit\/534/) ? 'WebKit' :
 		navigator.userAgent.match(/Safari/) ? 'Safari' :
 		navigator.userAgent.match(/Chrome/) ? 'Chrome' :

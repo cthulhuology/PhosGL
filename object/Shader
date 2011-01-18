@@ -1,0 +1,32 @@
+An.object().named('Shader').from({
+	gl: Screen.gl,
+	init: function(url) {
+		var shader = Shader.clone().copy({loaded:false});
+		shader.get(url, function(text) {
+			shader.loaded = true;
+			shader.data = text;	
+		});
+		return shader;
+	},
+	source: function() {
+		if (this.loaded) return this.data;
+	},
+	compile: function(kind) {
+		this.shader = this.gl.createShader(kind);
+		this.gl.shaderSource(this.shader,this.source());
+		this.gl.compileShader(this.shader);
+		if (!this.gl.getShaderParameter(this.shader, this.gl.COMPILE_STATUS)) {
+			alert(this.gl.getShaderInfoLog(this.shader));
+			return null;
+		}	
+		return this.shader;
+	},
+	fragment: function() {
+		if (this.shader) return this.shader;
+		return this.compile(this.gl.FRAGMENT_SHADER);
+	},
+	vertex: function() {
+		if (this.shader) return this.shader;
+		return this.compile(this.gl.VERTEX_SHADER);
+	},
+})
