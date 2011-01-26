@@ -4,8 +4,10 @@ An.object().named('App').from(Device, {
 	run: function () { 
 		Display.app = this;
 		Screen.clear();
-		this.dispatch('tick',{}).dispatch('draw',{});
-		this.timer = setTimeout("App.run()",this.delay);
+		App.dispatch('tick',{}).dispatch('draw',{});
+		Screen.draw();
+		App.timer = setTimeout("App.run()",this.delay);
+		return this;
 	},
 	fps: function() { return Math.floor(1000/this.delay) },
 }).run();

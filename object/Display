@@ -7,7 +7,6 @@ An.object().named('Display').from(Widget, {
 		this.to(e.dx/Display.dx,e.dy/Display.dy) 
 	}, // Override this if you don't want the canvas to scroll
 	draw: function() { 
-		Screen.background(0,0,0) 
 		Screen.as(this.extent).white().frame();
 	}, // Override to change the background
 	create: function() {

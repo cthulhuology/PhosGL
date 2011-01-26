@@ -8,8 +8,9 @@ An.object().named('Screen').from(Box,{
 	init: function() { 
 		this.display = window.Display;
 		this.gl = this.display.canvas.getContext('experimental-webgl'); 
-		this.gl.viewportWidth = this.display.canvas.width;
-		this.gl.viewportHeight = this.display.canvas.height;
+		this.gl.width = this.display.canvas.width;
+		this.gl.height = this.display.canvas.height;
+		this.background(0,0,0);
 		return this 
 	},
 	as: function(w) { return this.at(w.x,w.y).by(w.w,w.h) },
@@ -103,9 +104,9 @@ An.object().named('Screen').from(Box,{
 		$self.y = ym;
 		return this;
 	},
-	draw: function (img) {
-		// if (img.loaded) this.ctx.drawImage(img.data,0,0,img.w,img.h,this.x,this.y,this.w,this.h);
-		// add texture rendering to a rectangle
+	draw: function () {
+		this.gl.viewport(0, 0, this.gl.width, this.gl.height);
+		this.gl.clear(this.gl.COLOR_BUFFER_BIT|this.gl.DEPTH_BUFFER_BIT);
 		return this;
 	},
 	red: function() {
@@ -149,12 +150,15 @@ An.object().named('Screen').from(Box,{
 	//	this.ctx.stroke();
 		return this;
 	},
+	background: function(r,g,b) {
+		this.bg = { red: r*1.0, green: g* 1.0, blue: b*1.0};
+		return this;
+	},
 	clear: function() { 
-	//	clear screen
-	//		this.ctx.clearRect(0,0,this.display.w,this.display.h); 
-		return this },
-	background: function(r,g,b) { 
-		this.display.canvas.style.background = 'rgb('.append(r,',',g,',',b,')'); 
+		this.gl.clearColor(this.bg.red,this.bg.green,this.bg.blue,1.0);	//black
+		this.gl.clearDepth(1.0);
+		this.gl.enable(this.gl.DEPTH_TEST);
+		this.gl.depthFunc(this.gl.LEQUAL);
 		return this },
 	color: function(r,g,b) {
 	// set the color

@@ -29,4 +29,4 @@ An.object().named('Shader').from({
 		if (this.shader) return this.shader;
 		return this.compile(this.gl.VERTEX_SHADER);
 	},
-})
+});

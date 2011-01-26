@@ -66,9 +66,9 @@ An.object().named('Phosphor').from(Widget,{
 	abbr: localStorage['abbr'] || 'yyz',
 	init: function() {
 		Sound.copy({
-			trash: a(Sound,'sounds/trash.aif'),
-			error: a(Sound,'sounds/error.wav'),
-			click: a(Sound,'sounds/click.wav'),
+			trash: a(Sound,'http://localhost/riak/sounds/trash.aif'),
+			error: a(Sound,'http://localhost/riak/sounds/error.wav'),
+			click: a(Sound,'http://localhost/riak/sounds/click.wav'),
 		});
 		return this.copy({
 			help: a(Help,'images/help_button.png').at(Display.w-100,10),

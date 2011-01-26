@@ -84,7 +84,7 @@ Object.prototype.use = function() {
 		}
 		if (modules.length) {
 			var module = modules.shift();
-			var url = '/object/' + module;
+			var url = 'http://localhost/riak/object/' + module;
 			if (module) this.get(url,cb);
 		}
 	};
