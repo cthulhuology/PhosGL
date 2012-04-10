@@ -1,7 +1,6 @@
 An.object().named('Pad').from(Device, {
 	move: function(e) { 
 		e.preventDefault();
-		Pad.x = e.
 		Pad.x = e.x + Display.x;
 		Pad.y = e.y + Display.y; 
 		Pad.dispatch('move',e) 
